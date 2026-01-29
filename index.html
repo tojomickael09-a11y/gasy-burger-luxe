@@ -237,7 +237,60 @@
         .tag-vip { background: var(--gold); color: var(--dark); }
         .tag-new { background: var(--emerald); color: white; }
 
-        @media (max-width: 768px) { .dashboard-row { grid-template-columns: 1fr; } }
+        /* --- RESPONSIVE DESIGN (POUR MOBILE) --- */
+        @media (max-width: 768px) {
+            body {
+                -webkit-text-size-adjust: 100%; /* Empêche le zoom auto des polices sur iOS */
+            }
+
+            /* Header */
+            header {
+                padding: 15px;
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .header-right {
+                gap: 15px;
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            /* Hero */
+            .hero {
+                height: 50vh;
+                padding: 0 10px;
+            }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .btn-cta { padding: 12px 30px; }
+
+            /* Layout & Polices */
+            .container { padding: 20px 15px; }
+            .section-title { font-size: 1.6rem; }
+
+            /* Panier */
+            .cart-panel {
+                width: 100%;
+                max-width: 100%;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                border-radius: 15px 15px 0 0;
+                border-left: none;
+                border-right: none;
+                border-bottom: none;
+            }
+
+            /* Modals */
+            .modal-content { width: 90%; margin: 20% auto; padding: 20px; }
+
+            /* Dashboard */
+            .dashboard-row { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .data-table { font-size: 0.8rem; }
+            .data-table th, .data-table td { padding: 8px; }
+        }
     </style>
 </head>
 <body>
