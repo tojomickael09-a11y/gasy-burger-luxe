@@ -21,11 +21,18 @@
         
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark);
-            background-image: radial-gradient(circle at top right, rgba(9, 9, 7, 0.1), transparent 40%),
-                              radial-gradient(circle at bottom left, rgba(11, 77, 46, 0.15), transparent 40%);
+            /* Arrière-plan Arc-en-ciel animé */
+            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+            background-size: 400% 400%;
+            animation: rainbow 10s ease infinite;
             color: var(--light);
             line-height: 1.6;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         h1, h2, h3 { 
