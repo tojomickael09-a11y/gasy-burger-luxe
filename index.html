@@ -317,6 +317,78 @@
             .data-table { font-size: 0.8rem; }
             .data-table th, .data-table td { padding: 8px; }
         }
+
+        /* --- NOUVEAU STYLE : SECTION PAR PRODUIT (BURGERS) --- */
+        .burger-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 120px;
+            padding: 60px 0;
+        }
+
+        .burger-stack .card {
+            flex-direction: row;
+            background: transparent;
+            border: none;
+            overflow: visible;
+            align-items: center;
+            min-height: 400px;
+        }
+
+        .burger-stack .card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .burger-stack .card:hover {
+            transform: translateY(0); /* On désactive l'effet hover standard */
+            box-shadow: none;
+        }
+
+        .burger-stack .card-img {
+            flex: 1.2;
+            background: none;
+            font-size: 10rem;
+            animation: floatBurger 4s ease-in-out infinite;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+        }
+
+        .burger-stack .card-body {
+            flex: 1;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--gold);
+            padding: 50px;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            z-index: 2;
+        }
+
+        .burger-stack .card-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .burger-stack .card-desc {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        @keyframes floatBurger {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @media (max-width: 768px) {
+            .burger-stack .card, .burger-stack .card:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .burger-stack .card-img { font-size: 6rem; height: auto; }
+            .burger-stack .card-body { width: 100%; padding: 30px; }
+        }
     </style>
 </head>
 <body>
@@ -345,12 +417,13 @@
         <p>Ny Tsiron'ny Gasy | Édition Prestige</p>
         <a href="#menu" class="btn-cta">MANAFATRA (COMMANDER)</a>
         <button id="gift-card-btn" class="btn-cta" style="margin-top: 15px; border-color: var(--ruby); color: var(--ruby);">Cadeau (Fanomezana)</button>
+        <a href="concept.html" class="btn-cta" style="margin-top: 15px; border-color: var(--emerald); color: var(--emerald);">NOTRE HISTOIRE</a>
     </section>
 
     <div class="container" id="menu">
         <!-- Les éléments seront injectés ici par JavaScript -->
         <h2 class="section-title">Nos Burgers</h2>
-        <div class="grid" id="grid-burgers"></div>
+        <div class="burger-stack" id="grid-burgers"></div>
 
         <h2 class="section-title">Accompagnements</h2>
         <div class="grid" id="grid-sides"></div>
