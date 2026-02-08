@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Shoes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="navigation">
+    <ul>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#admin-login">Connexion administrative</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <h1>Les chaînes de luxe sont notre passion.</h1>
+    <p>Nous offrons les meilleures chaussures du monde pour les hommes qui apprécient le luxe et la qualité.</p>
+    <button id="shop-now">En savoir plus</button>
+  </section>
+
+  <!-- Collection Section -->
+  <section id="collection">
+    <h2>Nos collections</h2>
+    <div class="product-grid">
+      <!-- Grid de produits avec des images high-end, des descriptions détaillées et des informations sur les matériaux utilisés -->
+      <div class="product-grid-item">
+        <img src="produit-1.jpg" alt="Produit 1">
+        <h3>Chaussure no. 1</h3>
+        <p>Description du produit.</p>
+      </div>
+      <!-- Autres produits -->
+    </div>
+
+    <!-- Filtre et recherche -->
+    <form action="#collection">
+      <input type="search" name="search" placeholder="Recherche...">
+      <select name="category">
+        <option value="all">Toutes les catégories</option>
+        <option value="chaussures">Chaussures</option>
+        <option value="accessoires">Accessoires</option>
+      </select>
+    </form>
+  </section>
+
+  <!-- Connexion administrative -->
+  <section id="admin-login">
+    <h2>Connexion administrative</h2>
+    <form action="admin.php" method="post">
+      <label for="username">Nom d'utilisateur :</label>
+      <input type="text" name="username" required>
+      <label for="password">Mot de passe :</label>
+      <input type="password" name="password" required>
+      <button type="submit">Se connecter</button>
+    </form>
+  </section>
+
+  <!-- Stats Section -->
+  <section id="stats">
+    <h2>Statistiques</h2>
+    <ul>
+      <li><span>Ventes :</span> 1000 paires</li>
+      <li><span>Prix total :</span> $500,000</li>
+      <li><span>Moyenne de vente :</span> $250</li>
+    </ul>
+  </section>
+
+  <!-- Payment Section -->
+  <section id="payment">
+    <h2>Paiement</h2>
+    <p>Nous acceptons les moyens de paiement suivants : Visa, Mastercard, PayPal.</p>
+  </section>
+
+  <!-- Graph Section -->
+  <section id="graph">
+    <h2>Graphiques des ventes</h2>
+    <canvas id="graph-canvas"></canvas>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Nous sommes disponibles tous les jours de 9h à 18h. N'hésitez pas à nous contacter si vous avez des questions ou des préoccupations.</p>
+    <a href="#contact">Nous contacter</a>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="scripts.js"></script>
+</body>
+</html>

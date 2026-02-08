@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour ma Valentine ❤️</title>
+    <style>
+        /* --- CSS (Mise en forme) --- */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; 
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s, opacity 0.3s;
+            max-width: 450px;
+            width: 90%;
+        }
+
+        h1 { color: #d81b60; font-size: 2.5rem; margin-bottom: 10px; }
+        p { color: #880e4f; font-size: 1.2rem; margin-bottom: 30px; }
+
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 10px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease; /* Animation fluide du déplacement */
+        }
+
+        #btn-oui {
+            background-color: #e91e63;
+            color: white;
+            transform: scale(1);
+        }
+        #btn-oui:hover { transform: scale(1.1); }
+
+        #btn-non {
+            background-color: #fff;
+            color: #880e4f;
+            border: 2px solid #e91e63;
+            position: relative; /* Important pour le déplacement initial */
+        }
+
+        /* Message final caché */
+        .romance-container {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .heart {
+            position: absolute;
+            color: #e91e63;
+            animation: fall linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card" id="question-card">
+            <h1>💌 Mon cœur...</h1>
+            <p>J'ai une question super importante 🙈</p>
+            <p style="font-size: 1.8rem; color: #d81b60; font-weight: bold;">Est-ce que tu veux être ma Valentine ? 💖</p>
+            
+            <div style="min-height: 80px;"> <button class="btn" id="btn-oui">Oui 💘</button>
+                <button class="btn" id="btn-non">Non 😒</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="romance-container" id="romance-content">
+        <h1 style="font-size: 3rem; color: #d81b60;">🎉 OUI ! Je le savais ! 🎉</h1>
+        <p style="font-size: 1.5rem; color: #880e4f;">Tu fais de moi la personne la plus heureuse ! 🥰</p>
+        <p style="font-size: 1.5rem;">Je t'aime plus que tout ❤️</p>
+        <div style="font-size: 5rem; margin-top: 20px;">👩‍❤️‍💋‍👨 🌹 🎁</div>
+    </div>
+
+    <script>
+        const btnNon = document.getElementById('btn-non');
+        const btnOui = document.getElementById('btn-oui');
+        const questionCard = document.getElementById('question-card');
+        const romanceContent = document.getElementById('romance-content');
+
+        // Fonction pour faire fuir le bouton
+        function fuir(e) {
+            // Empêche le clic si jamais elle y arrive (sur mobile)
+            if(e) e.preventDefault();
+
+            // Calcule la taille de la fenêtre
+            const largeurFenetre = window.innerWidth;
+            const hauteurFenetre = window.innerHeight;
+
+            // Calcule une position aléatoire mais GARDE le bouton dans l'écran
+            // On retire la taille du bouton (environ 100px) pour qu'il ne dépasse pas
+            const nouveauX = Math.random() * (largeurFenetre - 150);
+            const nouveauY = Math.random() * (hauteurFenetre - 100);
+
+            // Applique la nouvelle position
+            btnNon.style.position = 'fixed'; // Devient "flottant" par rapport à l'écran
+            btnNon.style.left = nouveauX + 'px';
+            btnNon.style.top = nouveauY + 'px';
+        }
+
+        // --- ÉVÉNEMENTS ---
+        
+        // 1. Ordinateur : Quand la souris passe dessus
+        btnNon.addEventListener('mouseover', fuir);
+        
+        // 2. Mobile : Quand on touche l'écran sur le bouton
+        btnNon.addEventListener('touchstart', fuir);
+        
+        // 3. Sécurité : Si elle arrive à cliquer quand même
+        btnNon.addEventListener('click', fuir);
+
+        // --- PARTIE ROMANTIQUE (OUI) ---
+        btnOui.addEventListener('click', () => {
+            questionCard.style.display = 'none'; // Cache la question
+            btnNon.style.display = 'none';       // Cache le bouton Non définitivement
+            romanceContent.style.display = 'block'; // Affiche le message d'amour
+
+            // Lance la pluie de cœurs
+            setInterval(creerCoeurs, 200);
+        });
+
+        function creerCoeurs() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = Math.random() * 30 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+    </script>
+</body>
+</html>
